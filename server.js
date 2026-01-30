@@ -41,7 +41,8 @@ app.post('/submit', (req, res) => {
     res.redirect('/');
 });
 
-app.listen(8080, () => {
+app.listen(3000, () => {
     console.log('🚀 留言板服务器启动：http://localhost:3000');
 
 });
+

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我的留言板</title>
+    <style>
+        body {
+            font-family: "微软雅黑", sans-serif;
+            background-color: #f0f2f5;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 顶部标题区 */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        /* 输入框卡片 */
+        .input-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* 留言列表区 */
+        .message-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .message-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 5px solid #007bff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .name {
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .content {
+            color: #555;
+            font-size: 16px;
+        }
+
+        .time {
+            font-size: 12px;
+            color: #999;
+            text-align: right;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>💬 树洞留言板</h1>
+        <p>有什么想说的？留下来吧！</p>
+    </header>
+
+    <div class="input-card">
+        <form action="/submit" method="POST">
+            <input type="text" name="username" placeholder="你的名字" required>
+            <textarea name="message" rows="3" placeholder="写下你的想法..." required></textarea>
+            <button type="submit">🚀 发布留言</button>
+        </form>
+    </div>
+
+    <ul class="message-list">
+        <% messages.forEach(function(item) { %>
+            <li class="message-item">
+                <div class="name">
+                    <%= item.name %> 说：
+                </div>
+                <div class="content">
+                    <%= item.text %>
+                </div>
+                <div class="time">
+                    <%= item.time %>
+                </div>
+            </li>
+            <% }); %>
+
+                <% if (messages.length===0) { %>
+                    <p style="text-align: center; color: #999;">还没有人留言，快来抢沙发！🛋️</p>
+                    <% } %>
+    </ul>
+
+</body>
+
+</html>

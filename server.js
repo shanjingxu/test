@@ -41,8 +41,13 @@ app.post('/submit', (req, res) => {
     res.redirect('/');
 });
 
-app.listen(3000, () => {
-    console.log('🚀 留言板服务器启动：http://localhost:3000');
+// 🔥 更好的写法（推荐）：
+// 优先使用环境变量里的 PORT，如果没有（比如在本地），才用 8080
+const port = process.env.PORT || 8080;
 
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
+});
+
 
